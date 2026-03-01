@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOWA - Intelligent Order &amp; Workflow Automation</title>
+  <meta name="description" content="Digitise manufacturing order forms into structured ERP data using AI. Upload, extract, and export in seconds." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- --- Background particles --- -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ─── Header ─── -->
+    <header class="site-header">
+      <div class="logo">
+        <span class="logo-icon"></span>
+        <span class="logo-text">IOWA <span class="logo-sub">Pipeline</span></span>
+      </div>
+      <div class="header-badge">AI-Powered | ERP Ready</div>
+    </header>
+
+    <!-- ─── Hero ─── -->
+    <section class="hero">
+      <h1 class="hero-title">Intelligent Order<br /><span class="gradient-text">Workflow Automation</span></h1>
+      <p class="hero-sub">Drop a manufacturing order form image. Our AI extracts structured data and exports it as an ERP-ready CSV - instantly.</p>
+    </section>
+
+    <!-- ─── Pipeline Steps ─── -->
+    <div class="pipeline-steps">
+      <div class="step" id="step1">
+        <div class="step-icon"></div>
+        <div class="step-label">Upload</div>
+      </div>
+      <div class="step-arrow">></div>
+      <div class="step" id="step2">
+        <div class="step-icon"></div>
+        <div class="step-label">Preprocess</div>
+      </div>
+      <div class="step-arrow">></div>
+      <div class="step" id="step3">
+        <div class="step-icon"></div>
+        <div class="step-label">AI Extract</div>
+      </div>
+      <div class="step-arrow">></div>
+      <div class="step" id="step4">
+        <div class="step-icon"></div>
+        <div class="step-label">ERP Export</div>
+      </div>
+    </div>
+
+    <!-- ─── Upload Card ─── -->
+    <div class="card upload-card">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="orderImage" accept="image/*" class="file-input" />
+        <div class="drop-content" id="dropContent">
+          <div class="drop-icon"></div>
+          <p class="drop-title">Drag and drop your order form</p>
+          <p class="drop-hint">or <span class="drop-link" onclick="document.getElementById('orderImage').click()">browse files</span></p>
+          <p class="drop-formats">JPEG | PNG | WEBP | BMP</p>
+        </div>
+      </div>
+
+      <!-- Image Preview -->
+      <div class="preview-wrap hidden" id="previewWrap">
+        <img id="previewImg" class="preview-img" src="" alt="Selected order form preview" />
+        <div class="preview-overlay">
+          <button class="preview-clear" id="clearBtn" title="Remove image">X</button>
+        </div>
+        <div class="preview-label" id="previewLabel"></div>
+      </div>
+
+      <!-- Process Button -->
+      <button class="btn-primary" id="processBtn" onclick="processOrder()" disabled>
+        <span id="btnText">Process Order Form</span>
+      </button>
+
+      <!-- Loader -->
+      <div class="loader-wrap hidden" id="loaderWrap">
+        <div class="loader-spinner"></div>
+        <p class="loader-msg" id="loaderMsg">Uploading image...</p>
+      </div>
+
+      <!-- Error Toast -->
+      <div class="error-toast hidden" id="errorToast">
+        <span class="error-icon">!</span>
+        <span id="errorMsg"></span>
+        <button class="error-close" onclick="hideError()">X</button>
+      </div>
+
+    </div>
+
+    <!-- --- Results Card --- -->
+    <div class="card results-card hidden" id="resultsSection">
+
+      <div class="results-header">
+        <h2 class="results-title">Extraction Complete</h2>
+        <div class="meta-badges">
+          <span class="meta-badge" id="badgeCustomer">-</span>
+          <span class="meta-badge" id="badgeDate">-</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="dataTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Part Number</th>
+              <th>Quantity</th>
+              <th>Urgency</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <a id="downloadBtn" href="#" class="btn-download" download>
+        Download ERP CSV
+      </a>
+
+    </div>
+
+    <!-- ─── Footer ─── -->
+    <footer class="site-footer">
+      IOWA Pipeline | Powered by <strong>Gemini 1.5 Flash</strong> + <strong>OpenCV</strong> + <strong>FastAPI</strong>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
