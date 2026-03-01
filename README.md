@@ -52,4 +52,4 @@ IOWA Pipeline is an AI-powered tool designed to digitize manufacturing order for
 4. **Export**: Pandas flattens the result into an ERP-compatible CSV.
 
 ---
-Created by [Harsh PAHADIA](https://github.com/Harsh-PAHADIA)
+Created by [Harshita Pahadia](https://github.com/Harsh-PAHADIA)
